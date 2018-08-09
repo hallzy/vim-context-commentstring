@@ -5,32 +5,37 @@
 let g:context#commentstring#table = {}
 
 let g:context#commentstring#table.vim = {
-			\ 'vimLuaRegion'     : '--%s',
-			\ 'vimPerlRegion'    : '#%s',
-			\ 'vimPythonRegion'  : '#%s',
-			\}
+  \ 'vimLuaRegion'     : '--%s',
+  \ 'vimPerlRegion'    : '#%s',
+  \ 'vimPythonRegion'  : '#%s',
+\}
 
 let g:context#commentstring#table.html = {
-			\ 'javaScript'  : '//%s',
-			\ 'cssStyle'    : '/*%s*/',
-			\}
+  \ 'javaScript'  : '//%s',
+  \ 'cssStyle'    : '/*%s*/',
+\}
 
 let g:context#commentstring#table.xhtml = g:context#commentstring#table.html
 
 let g:context#commentstring#table['javascript.jsx'] = {
-			\ 'jsxStatment' : '/*%s*/',
-			\ 'jsxRegion' : '{/*%s*/}',
-			\}
+  \ 'jsxStatment' : '/*%s*/',
+  \ 'jsxRegion' : '{/*%s*/}',
+\}
 
 let g:context#commentstring#table['typescript.tsx'] = {
-			\ 'tsxStatment' : '/*%s*/',
-			\ 'tsxRegion' : '{/*%s*/}',
-			\}
+  \ 'tsxStatment' : '/*%s*/',
+  \ 'tsxRegion' : '{/*%s*/}',
+\}
 
 let g:context#commentstring#table.vue = {
-			\ 'javaScript'  : '//%s',
-			\ 'cssStyle'    : '/*%s*/',
-			\}
+  \ 'javaScript'  : '//%s',
+  \ 'cssStyle'    : '/*%s*/',
+\}
 
 let g:context#commentstring#table['typescript.jsx'] = g:context#commentstring#table['typescript.tsx']
 
+let g:context#commentstring#table.php = {
+  \ 'javaScript'  : '// %s',
+  \ 'phpRegion'   : '// %s',
+  \ 'cssStyle'    : '/*%s*/',
+\}
