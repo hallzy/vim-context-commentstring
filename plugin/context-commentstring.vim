@@ -8,35 +8,36 @@ endif
 
 
 augroup ContextCommentstringBootstrap
-  autocmd!
-  autocmd FileType * call <SID>Setup()
+	autocmd!
+	autocmd FileType * call <SID>Setup()
 augroup END
 
 
 function! s:Setup()
-  augroup ContextCommentstringEnabled
-    " Clear previous autocommands first in all cases, in case the filetype
-    " changed from something in the table, to something NOT in the table.
-    autocmd! CursorMoved <buffer>
-    if !empty(&filetype) && has_key(g:context#commentstring#table, &filetype)
-      let b:original_commentstring=&l:commentstring
-      autocmd CursorMoved <buffer> call <SID>UpdateCommentString()
-    endif
-  augroup END
+	augroup ContextCommentstringEnabled
+		" Clear previous autocommands first in all cases, in case the filetype
+		" changed from something in the table, to something NOT in the table.
+		autocmd! CursorMoved <buffer>
+		if !empty(&filetype) && has_key(g:context#commentstring#table, &filetype)
+			let b:original_commentstring=&l:commentstring
+			autocmd CursorMoved <buffer> call <SID>UpdateCommentString()
+		endif
+	augroup END
 endfunction
 
 
 function! s:UpdateCommentString()
-  let l:stack = synstack(line('.'), col('.'))
-  if !empty(l:stack)
-    for l:name in map(l:stack, "synIDattr(v:val, 'name')")
-      if has_key(g:context#commentstring#table[&filetype], l:name)
-        let &l:commentstring = g:context#commentstring#table[&filetype][l:name]
-        return
-      endif
-    endfor
-  endif
-  let &l:commentstring = b:original_commentstring
+	let l:stack = synstack(line('.'), col('.'))
+	if !empty(l:stack)
+		for l:name in map(l:stack, "synIDattr(v:val, 'name')")
+			if has_key(g:context#commentstring#table[&filetype], l:name)
+				let &l:commentstring = g:context#commentstring#table[&filetype][l:name]
+				return
+			endif
+		endfor
+	endif
+	let &l:commentstring = b:original_commentstring
 endfunction
+
 
 let g:loaded_context_commentstring = 1
